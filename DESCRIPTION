@@ -1,11 +1,16 @@
 Package: nplyr
 Title: A Grammar of Nested Data Manipulation
-Version: 0.2.0.9000
+Version: 0.3.0
 Authors@R: 
     c(person(given = "Mark",
              family = "Rieke",
-             role = c("aut", "cre"),
+             role = c("aut"),
              email = "markjrieke@gmail.com"),
+      person(given = "Bolívar", 
+             family = "Aponte Rolón", 
+             role = "cre",
+             email = "bolaponte@pm.me",
+             comment = c(ORCID = "0000-0002-2544-4551")),
       person(given = "Joran",
              family = "Elias",
              role = "ctb"))
@@ -16,9 +21,9 @@ Description: Provides functions for manipulating nested data frames in a
     functions that provide tools for common data manipulation steps: filtering 
     rows, selecting columns, summarising grouped data, among others.
 License: MIT + file LICENSE
-URL: https://github.com/markjrieke/nplyr,
-    https://markjrieke.github.io/nplyr/
-BugReports: https://github.com/markjrieke/nplyr/issues
+URL: https://github.com/jibarozzo/nplyr,
+    https://jibarozzo.github.io/nplyr/
+BugReports: https://github.com/jibarozzo/nplyr/issues
 Depends:
     R (>= 3.5.0)
 Imports:
