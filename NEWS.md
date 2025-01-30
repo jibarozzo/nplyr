@@ -1,3 +1,7 @@
+# nplyr 0.3.0
+
+* The package has been transferred to a new maintainer. From @markjrieke to @jibarozzo.
+
 # nplyr 0.2.0.9000
 
 * Add more informative error when trying to use nplyr functions with a rowwise df (#18).
