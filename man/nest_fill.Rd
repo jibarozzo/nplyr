@@ -17,7 +17,7 @@ data frame (e.g., from dbplyr or dtplyr).}
 
 \item{.nest_data}{A list-column containing data frames}
 
-\item{...}{<\code{\link[=tidyr_tidy_select]{tidy-select}}> Columns to fill.}
+\item{...}{\code{<[`tidy-select`][tidyr_tidy_select]>} Columns to fill.}
 
 \item{.direction}{Direction in which to fill missing values. Currently either
 "down" (the default), "up", "downup" (i.e. first down and then up) or "updown"
@@ -32,21 +32,21 @@ will have the chosen columns filled in the direction specified by \code{.directi
 frames using the next or previous entries in a column of nested data frames.
 }
 \details{
-\code{nest_fill()} is a wrapper for \code{\link[tidyr:fill]{tidyr::fill()}} and maintains the functionality
+\code{nest_fill()} is a wrapper for \code{[tidyr::fill()]} and maintains the functionality
 of \code{fill()} within each nested data frame. For more information on \code{fill()}
 please refer to the documentation in \href{https://tidyr.tidyverse.org/}{'tidyr'}.
 }
 \examples{
 set.seed(123)
-gm <- 
-  gapminder::gapminder \%>\% 
+gm <-
+  gapminder::gapminder \%>\%
   dplyr::mutate(pop = dplyr::if_else(runif(dplyr::n()) >= 0.9,
                                      NA_integer_,
                                      pop))
-                                     
+
 gm_nest <- gm \%>\% tidyr::nest(country_data = -continent)
 
-gm_nest \%>\% 
+gm_nest \%>\%
   nest_fill(country_data, pop, .direction = "down")
 }
 \seealso{

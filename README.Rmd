@@ -17,11 +17,9 @@ knitr::opts_chunk$set(
 
 # nplyr <img src="man/figures/logo.png" align="right" width="120" />
 
-**Author:** [Mark Rieke](https://www.thedatadiary.net/about/about.html)<br/>
-**License:** [MIT](https://github.com/markjrieke/nplyr/blob/main/LICENSE)
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/markjrieke/nplyr/workflows/R-CMD-check/badge.svg)](https://github.com/markjrieke/nplyr/actions)
+[![R-CMD-check](https://github.com/jibarozzo/nplyr/workflows/R-CMD-check/badge.svg)](https://github.com/jibarozzo/nplyr/actions)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/nplyr)](https://CRAN.R-project.org/package=nplyr)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/nplyr)](https://cran.r-project.org/package=nplyr)
@@ -57,7 +55,7 @@ You can install the released version of nplyr from CRAN or the development versi
 install.packages("nplyr")
 
 # install from github
-devtools::install_github("markjrieke/nplyr")
+devtools::install_github("jibarozzo/nplyr")
 ```
 
 ## Usage
@@ -67,7 +65,7 @@ To get started, we'll create a nested column for the country data within each co
 ```{r}
 library(nplyr)
 
-gm_nest <- 
+gm_nest <-
   gapminder::gapminder_unfiltered %>%
   tidyr::nest(country_data = -continent)
 
@@ -77,10 +75,10 @@ gm_nest
 dplyr can perform operations on the top-level data frame, but with nplyr, we can perform operations on the nested data frames:
 
 ```{r}
-gm_nest_example <- 
+gm_nest_example <-
   gm_nest %>%
   nest_filter(country_data, year == max(year)) %>%
-  nest_mutate(country_data, pop_millions = pop/1000000)
+  nest_mutate(country_data, pop_millions = pop / 1000000)
 
 # each nested tibble is now filtered to the most recent year
 gm_nest_example
@@ -94,11 +92,11 @@ gm_nest_example %>%
 nplyr also supports grouped operations with `nest_group_by()`:
 
 ```{r}
-gm_nest_example <- 
+gm_nest_example <-
   gm_nest %>%
   nest_group_by(country_data, year) %>%
   nest_summarise(
-    country_data, 
+    country_data,
     n = n(),
     lifeExp = median(lifeExp),
     pop = median(pop),
@@ -117,4 +115,4 @@ More examples can be found in the package vignettes and function documentation.
 
 ## Bug reports/feature requests
 
-If you notice a bug, want to request a new feature, or have recommendations on improving documentation, please [open an issue](https://github.com/markjrieke/nplyr/issues) in the package repository. 
+If you notice a bug, want to request a new feature, or have recommendations on improving documentation, please [open an issue](https://github.com/jibarozzo/nplyr/issues) in the package repository. 
