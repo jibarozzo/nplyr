@@ -14,6 +14,8 @@ Authors@R:
       person(given = "Joran",
              family = "Elias",
              role = "ctb"))
+Author: Mark Rieke [aut], Bolívar Aponte Rolón [cre] (<https://orcid.org/0000-0002-2544-4551>), Joran Elias [ctb]
+Maintainer: Bolívar Aponte Rolón <bolaponte@pm.me>
 Description: Provides functions for manipulating nested data frames in a 
     list-column using 'dplyr' <https://dplyr.tidyverse.org/> syntax. Rather than 
     unnesting, then manipulating a data frame, 'nplyr' allows users to 
