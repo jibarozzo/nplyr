@@ -3,13 +3,9 @@
 
 # nplyr <img src="man/figures/logo.png" align="right" width="120" />
 
-**Author:** [Mark
-Rieke](https://www.thedatadiary.net/about/about.html)<br/> **License:**
-[MIT](https://github.com/markjrieke/nplyr/blob/main/LICENSE)
-
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/markjrieke/nplyr/workflows/R-CMD-check/badge.svg)](https://github.com/markjrieke/nplyr/actions)
+[![R-CMD-check](https://github.com/jibarozzo/nplyr/workflows/R-CMD-check/badge.svg)](https://github.com/jibarozzo/nplyr/actions)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN
@@ -58,7 +54,7 @@ development version from github with the
 install.packages("nplyr")
 
 # install from github
-devtools::install_github("markjrieke/nplyr")
+devtools::install_github("jibarozzo/nplyr")
 ```
 
 ## Usage
@@ -69,8 +65,9 @@ each continent from the
 
 ``` r
 library(nplyr)
+library(dplyr)
 
-gm_nest <- 
+gm_nest <-
   gapminder::gapminder_unfiltered %>%
   tidyr::nest(country_data = -continent)
 
@@ -90,10 +87,10 @@ dplyr can perform operations on the top-level data frame, but with
 nplyr, we can perform operations on the nested data frames:
 
 ``` r
-gm_nest_example <- 
+gm_nest_example <-
   gm_nest %>%
   nest_filter(country_data, year == max(year)) %>%
-  nest_mutate(country_data, pop_millions = pop/1000000)
+  nest_mutate(country_data, pop_millions = pop / 1000000)
 
 # each nested tibble is now filtered to the most recent year
 gm_nest_example
@@ -109,7 +106,7 @@ gm_nest_example
 
 # if we unnest, we can see that a new column for pop_millions has been added
 gm_nest_example %>%
-  slice_head(n = 1) %>%
+  dplyr::slice_head(n = 1) %>%
   tidyr::unnest(country_data)
 #> # A tibble: 43 × 7
 #>    continent country           year lifeExp        pop gdpPercap pop_millions
@@ -124,17 +121,17 @@ gm_nest_example %>%
 #>  8 Asia      China             2007    73.0 1318683096     4959.     1319.   
 #>  9 Asia      Hong Kong, China  2007    82.2    6980412    39725.        6.98 
 #> 10 Asia      India             2007    64.7 1110396331     2452.     1110.   
-#> # … with 33 more rows
+#> # ℹ 33 more rows
 ```
 
 nplyr also supports grouped operations with `nest_group_by()`:
 
 ``` r
-gm_nest_example <- 
+gm_nest_example <-
   gm_nest %>%
   nest_group_by(country_data, year) %>%
   nest_summarise(
-    country_data, 
+    country_data,
     n = n(),
     lifeExp = median(lifeExp),
     pop = median(pop),
@@ -169,7 +166,7 @@ gm_nest_example %>%
 #>  8 Europe     1957    31    67.5 7363802      6093.
 #>  9 Europe     1958    18    69.6 8308052.     8833.
 #> 10 Europe     1959    18    69.6 8379664.     9088.
-#> # … with 48 more rows
+#> # ℹ 48 more rows
 ```
 
 More examples can be found in the package vignettes and function
@@ -179,5 +176,5 @@ documentation.
 
 If you notice a bug, want to request a new feature, or have
 recommendations on improving documentation, please [open an
-issue](https://github.com/markjrieke/nplyr/issues) in the package
+issue](https://github.com/jibarozzo/nplyr/issues) in the package
 repository.

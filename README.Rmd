@@ -64,6 +64,7 @@ To get started, we'll create a nested column for the country data within each co
 
 ```{r}
 library(nplyr)
+library(dplyr)
 
 gm_nest <-
   gapminder::gapminder_unfiltered %>%
@@ -85,7 +86,7 @@ gm_nest_example
 
 # if we unnest, we can see that a new column for pop_millions has been added
 gm_nest_example %>%
-  slice_head(n = 1) %>%
+  dplyr::slice_head(n = 1) %>%
   tidyr::unnest(country_data)
 ```
 

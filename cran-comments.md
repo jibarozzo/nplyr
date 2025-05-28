@@ -5,6 +5,7 @@ This is a resubmission. In this version I have:
 * Updated all repository URLs in README.md to point to the new repository location (jibarozzo/nplyr)
 * Fixed the package maintainer information in DESCRIPTION, transferring maintainership from Mark Rieke to Bolívar Aponte Rolón
 * Resolved previous Rd cross-reference issues with missing package anchors in nest_fill.Rd
+* Update README files to reflect new maintainer and repository.
 * Incremented the version number from 0.2.0.9000 to 0.3.0 to reflect the maintainer change and fixes
 
 ## R CMD check results
